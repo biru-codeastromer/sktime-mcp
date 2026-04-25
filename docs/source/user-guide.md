@@ -314,34 +314,34 @@ For full details on data source configuration, see the [Data Sources](data-sourc
 
 While `sktime-mcp` is a powerful tool for prototyping, please be aware of the current limitations.
 
-#### 1. In-Memory Handles (Explicit Persistence Required)
+### 1. In-Memory Handles (Explicit Persistence Required)
 The server stores active handles in standard Python dictionaries.
 > **Impact**: If the server restarts or connection drops, in-memory handles are lost. Use `save_model` to persist fitted estimators when needed.
 
-#### 2. Mixed Sync/Async Execution
+### 2. Mixed Sync/Async Execution
 Heavy operations can block when using synchronous tools.
 > **Impact**: For long-running jobs, ask the assistant to run them in the background so the server remains responsive.
 
-#### 3. Memory Limits
+### 3. Memory Limits
 Data is read entirely into RAM.
 > **Impact**: Loading multi-gigabyte files may crash the server. Consider pre-filtering large datasets before loading.
 
-#### 4. Security
+### 4. Security
 Instantiation allows arbitrary parameters within the registry.
 > **Impact**: While constrained to valid estimators, there is limited validation on parameter values.
 
-#### 5. Rigid Data Formatting
+### 5. Rigid Data Formatting
 The auto-format logic is heuristic-based.
 > **Impact**: Complex time series with irregular gaps or mixed frequencies might fail to auto-format correctly, requiring manual pre-processing outside the tool.
 
-#### 6. Local-Only Filesystem
+### 6. Local-Only Filesystem
 > **Impact**: The server cannot access files inside isolated Docker containers unless volumes are mounted. Direct HTTP upload is not yet supported.
 
-#### 7. JSON Serialization Loss
+### 7. JSON Serialization Loss
 Complex sktime types (Periods, Intervals) are converted to strings.
 > **Impact**: Some rich metadata is simplified when returned in conversation.
 
-#### 8. Code Export Limitations
+### 8. Code Export Limitations
 `export_code` uses template-based generation.
 > **Impact**: Highly complex pipelines with lambda functions or edge cases might generate code that needs minor manual fixes.
 

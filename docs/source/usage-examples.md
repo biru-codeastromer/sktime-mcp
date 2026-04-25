@@ -282,4 +282,4 @@ Below are standalone tasks you can ask about at any time — they don't need to 
 
 ## 📋 MCP Tool Reference
 
-For developers and advanced users who want to understand the full MCP tool signatures, see the [Ideal MCP Tools](ideal-mcp-tools.md) design document. That page documents every tool's input schema, parameters, and intended use cases.
+For developers and advanced users who want to understand the full MCP tool surface, see the [MCP Tool Reference](ideal-mcp-tools.md). That page summarizes the currently registered tools and points back to the detailed workflow examples in this guide.

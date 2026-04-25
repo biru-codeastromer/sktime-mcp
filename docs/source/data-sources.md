@@ -63,7 +63,10 @@ Load data from any supported source.
 {
   "config": {
     "type": "pandas",
-    "data": {"date": [...], "value": [...]},
+    "data": {
+      "date": ["2024-01-01", "2024-01-02"],
+      "value": [10, 12]
+    },
     "time_column": "date",
     "target_column": "value"
   }
