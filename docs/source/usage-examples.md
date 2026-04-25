@@ -282,4 +282,4 @@ Below are standalone tasks you can ask about at any time — they don't need to 
 
 ## 📋 MCP Tool Reference
 
-For developers and advanced users who want to understand the full MCP tool surface, see the [MCP Tool Reference](ideal-mcp-tools.md). That page summarizes the currently registered tools and points back to the detailed workflow examples in this guide.
+For developers and advanced users who want to understand the Python API surface behind the MCP tools, see the [API Reference](api.rst).

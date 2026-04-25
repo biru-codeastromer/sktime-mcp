@@ -136,10 +136,7 @@ When completed:
   "status": "completed",
   "result": {
     "success": true,
-    "predictions": {
-      "2024-01": 450.2,
-      "2024-02": 455.1
-    },
+    "predictions": {...},
     "horizon": 12
   }
 }
@@ -162,12 +159,14 @@ List all background jobs with optional filtering.
     {
       "job_id": "abc-123",
       "status": "completed",
-      "estimator_name": "ARIMA"
+      "estimator_name": "ARIMA",
+      ...
     },
     {
       "job_id": "def-456",
       "status": "running",
-      "progress_percentage": 50.0
+      "progress_percentage": 50.0,
+      ...
     }
   ]
 }

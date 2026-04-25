@@ -1,11 +1,11 @@
 # Complete Code Explanation: sktime-mcp
 
 ## 📋 Table of Contents
-1. Project Overview
-2. Architecture
-3. File-by-File Breakdown
-4. How It All Works Together
-5. Key Concepts
+1. [Project Overview](#project-overview)
+2. [Architecture](#architecture)
+3. [File-by-File Breakdown](#file-by-file-breakdown)
+4. [How It All Works Together](#how-it-all-works-together)
+5. [Key Concepts](#key-concepts)
 
 ---
 
@@ -197,15 +197,15 @@ for name, cls in estimators:
      - `suggest_pipeline(task, requirements)`: Suggest a valid pipeline
 
 **Validation Rules**:
-```text
-Valid: Transformer -> Forecaster
-["Detrender", "ARIMA"]
+```python
+# Valid: Transformer → Forecaster
+["Detrender", "ARIMA"]  ✅
 
-Invalid: Forecaster -> Forecaster
-["ARIMA", "NaiveForecaster"]
+# Invalid: Forecaster → Forecaster
+["ARIMA", "NaiveForecaster"]  ❌
 
-Valid: Multiple Transformers -> Forecaster
-["ConditionalDeseasonalizer", "Detrender", "ARIMA"]
+# Valid: Multiple Transformers → Forecaster
+["ConditionalDeseasonalizer", "Detrender", "ARIMA"]  ✅
 ```
 
 ---
