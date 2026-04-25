@@ -17,6 +17,7 @@ from mcp.types import TextContent, Tool
 
 from sktime_mcp.composition.validator import get_composition_validator
 from sktime_mcp.tools.codegen import export_code_tool
+from sktime_mcp.tools.composition import get_valid_compositions_tool
 from sktime_mcp.tools.data_tools import (
     load_data_source_async_tool,
     load_data_source_tool,
@@ -237,6 +238,22 @@ async def list_tools() -> list[Tool]:
                     },
                 },
                 "required": ["components"],
+            },
+        ),
+        Tool(
+            name="get_valid_compositions",
+            description=(
+                "Return task types that can validly precede or follow an estimator in a pipeline"
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "estimator": {
+                        "type": "string",
+                        "description": "Estimator name to inspect, e.g. 'Detrender' or 'ARIMA'",
+                    },
+                },
+                "required": ["estimator"],
             },
         ),
         # -- Execution -------------------------------------------------------
@@ -650,6 +667,8 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
             result = validation.to_dict()
             result["success"] = result["valid"]
 
+        elif name == "get_valid_compositions":
+            result = get_valid_compositions_tool(arguments["estimator"])
 
         # -- Data ------------------------------------------------------------
         elif name == "list_available_data":
