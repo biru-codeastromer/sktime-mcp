@@ -44,6 +44,7 @@ from sktime_mcp.tools.job_tools import (
 from sktime_mcp.tools.list_available_data import list_available_data_tool
 from sktime_mcp.tools.list_estimators import (
     get_available_tags,
+    get_available_tasks,
     list_estimators_tool,
 )
 from sktime_mcp.tools.save_model import save_model_tool
@@ -155,6 +156,15 @@ async def list_tools() -> list[Tool]:
                 },
                 "required": ["estimator"],
             },
+        ),
+        Tool(
+            name="get_available_tasks",
+            description=(
+                "List valid task names that can be used with list_estimators, "
+                "such as forecasting, classification, regression, transformation, "
+                "and clustering."
+            ),
+            inputSchema={"type": "object", "properties": {}},
         ),
         Tool(
             name="get_available_tags",
@@ -597,6 +607,9 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
         elif name == "describe_estimator":
             result = describe_estimator_tool(arguments["estimator"])
 
+        elif name == "get_available_tasks":
+            result = get_available_tasks()
+
         elif name == "get_available_tags":
             result = get_available_tags()
 
@@ -649,7 +662,6 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
             validation = validator.validate_pipeline(arguments["components"])
             result = validation.to_dict()
             result["success"] = result["valid"]
-
 
         # -- Data ------------------------------------------------------------
         elif name == "list_available_data":

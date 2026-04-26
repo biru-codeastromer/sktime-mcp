@@ -137,6 +137,34 @@ class TestTools:
         assert "estimators" in result
         assert len(result["estimators"]) <= 5
 
+    def test_get_available_tasks_tool(self):
+        """Test available task discovery helper."""
+        from sktime_mcp.tools.list_estimators import get_available_tasks
+
+        result = get_available_tasks()
+
+        assert result["success"]
+        assert "forecasting" in result["tasks"]
+        assert "classification" in result["tasks"]
+        assert result["count"] == len(result["tasks"])
+        assert "list_estimators" in result["next_step_hint"]
+
+    async def test_get_available_tasks_registered_and_callable(self):
+        """Test get_available_tasks is exposed through the MCP server."""
+        import json
+
+        from sktime_mcp.server import call_tool, list_tools
+
+        tools = await list_tools()
+        assert "get_available_tasks" in {tool.name for tool in tools}
+
+        response = await call_tool("get_available_tasks", {})
+        payload = json.loads(response[0].text)
+
+        assert payload["success"]
+        assert "forecasting" in payload["tasks"]
+        assert payload["count"] == len(payload["tasks"])
+
     def test_describe_unknown_estimator(self):
         """Test describing an unknown estimator."""
         from sktime_mcp.tools.describe_estimator import describe_estimator_tool
