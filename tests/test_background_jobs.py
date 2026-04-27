@@ -2,11 +2,6 @@
 Test background job management.
 """
 
-import asyncio
-import time
-
-import pytest
-
 from sktime_mcp.runtime.executor import get_executor
 from sktime_mcp.runtime.jobs import JobStatus, get_job_manager
 
@@ -121,8 +116,6 @@ def test_list_jobs():
     job_manager.delete_job(job3)
 
 
-
-
 def test_cancel_job():
     """Test cancelling a job."""
     job_manager = get_job_manager()
@@ -173,7 +166,6 @@ def run_all_tests():
 
     print("\n3. Testing list jobs...")
     test_list_jobs()
-
 
     print("\n5. Testing cancel job...")
     test_cancel_job()
