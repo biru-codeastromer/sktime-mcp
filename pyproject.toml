@@ -32,6 +32,7 @@ dependencies = [
     "scikit-learn>=1.0.0",
     "statsmodels>=0.13.0",
     "pmdarima>=2.0.0",
+    "aiohttp>=3.9.0",
 ]
 
 [project.optional-dependencies]
@@ -103,11 +104,11 @@ include = [
 
 [tool.black]
 line-length = 100
-target-version = ["py39", "py310", "py311", "py312"]
+target-version = ["py310", "py311", "py312"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py39"
+target-version = "py310"
 
 [tool.ruff.lint]
 # Enable a broader set of rules
