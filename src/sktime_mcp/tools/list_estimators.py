@@ -3,15 +3,15 @@ list_estimators tool for sktime MCP.
 Discovers estimators by task type, capability tags, and/or name search.
 """
 
-from typing import Any, Optional
+from typing import Any
 
 from sktime_mcp.registry.interface import get_registry
 
 
 def _validate_discovery_filters(
-    task: Optional[str],
-    tags: Optional[dict[str, Any]],
-    query: Optional[str],
+    task: str | None,
+    tags: dict[str, Any] | None,
+    query: str | None,
 ) -> dict[str, Any]:
     """Validate top-level discovery tool filters."""
     if task is not None and not isinstance(task, str):
@@ -36,9 +36,9 @@ def _validate_discovery_filters(
 
 
 def list_estimators_tool(
-    task: Optional[str] = None,
-    tags: Optional[dict[str, Any]] = None,
-    query: Optional[str] = None,
+    task: str | None = None,
+    tags: dict[str, Any] | None = None,
+    query: str | None = None,
     limit: int = 50,
     offset: int = 0,
 ) -> dict[str, Any]:
