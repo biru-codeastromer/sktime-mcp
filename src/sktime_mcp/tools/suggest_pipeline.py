@@ -4,14 +4,14 @@ suggest_pipeline tool for sktime MCP.
 Suggests valid estimator pipelines using the existing composition validator.
 """
 
-from typing import Any, Optional
+from typing import Any
 
 from sktime_mcp.composition.validator import get_composition_validator
 
 
 def suggest_pipeline_tool(
     task: str,
-    requirements: Optional[dict[str, Any]] = None,
+    requirements: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """
     Suggest a valid estimator pipeline for a target task.
