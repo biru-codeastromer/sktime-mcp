@@ -19,7 +19,7 @@ def load_data_source_tool(config: dict[str, Any]) -> dict[str, Any]:
     Args:
         config: Data source configuration
             {
-                "type": "pandas" | "sql" | "file",
+                "type": "pandas" | "sql" | "file" | "url",
                 ... (type-specific configuration)
             }
 
