@@ -118,6 +118,12 @@ def search_estimators_tool(query: str, limit: int = 20) -> dict[str, Any]:
             "error": validation["error"],
         }
 
+    if limit < 1:
+        return {
+            "success": False,
+            "error": "limit must be a positive integer.",
+        }
+
     registry = get_registry()
 
     try:
